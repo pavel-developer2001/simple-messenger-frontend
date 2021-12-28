@@ -1,0 +1,18 @@
+.main {
+  display: flex;
+  height: 100%;
+}
+.left {
+  min-width: 500px;
+  border-right: 1px solid black;
+}
+.navbar {
+  display: flex;
+  padding: 10px 5px;
+}
+.searchInput {
+  padding-left: 2px;
+}
+.right {
+  width: 100%;
+}

@@ -1,0 +1,28 @@
+.mainList {
+  margin: 10px 0px;
+}
+.main {
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid gray;
+  .content {
+    padding-left: 10px;
+    strong {
+      font-size: 18px;
+      font-weight: 500;
+    }
+    p {
+      padding-top: 7px;
+      color: darkcyan;
+      font-size: 13px;
+      span {
+        color: blueviolet;
+        font-size: 14px;
+      }
+    }
+  }
+  &:hover {
+    background-color: rgb(216, 196, 196);
+  }
+}

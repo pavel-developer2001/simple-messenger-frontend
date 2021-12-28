@@ -1,0 +1,33 @@
+.mainList {
+  max-height: 614px;
+  overflow: auto;
+}
+.main {
+  display: flex;
+  padding: 15px 20px;
+  .avatar {
+    align-items: end;
+    display: flex;
+  }
+  .content {
+    padding-left: 13px;
+  }
+}
+.messageText {
+  padding: 7px 12px;
+  max-width: 300px;
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    strong {
+      color: rgb(81, 146, 7);
+      font-weight: 500;
+      font-size: 14px;
+    }
+  }
+  .body {
+    padding: 3px 0;
+    font-weight: 500;
+  }
+}
