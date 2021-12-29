@@ -30,6 +30,22 @@ const ChannelList = () => {
       <ChannelListItem />
       <ChannelListItem />
       <ChannelListItem />
+      <ChannelListItem />
+      <ChannelListItem />
+      <ChannelListItem />
+      <ChannelListItem />
+      <ChannelListItem />
+      <ChannelListItem />
+      <ChannelListItem />
+      <ChannelListItem />
+      <ChannelListItem />
+      <ChannelListItem />
+      <ChannelListItem />
+      <ChannelListItem />
+      <ChannelListItem />
+      <ChannelListItem />
+      <ChannelListItem />
+      <ChannelListItem />
     </div>
   );
 };

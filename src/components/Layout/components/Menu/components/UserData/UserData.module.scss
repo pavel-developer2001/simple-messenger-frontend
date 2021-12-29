@@ -1,0 +1,23 @@
+.main {
+  padding: 10px 15px;
+  background-color: blueviolet;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .data {
+    padding-top: 10px;
+    strong {
+      font-weight: 500;
+      font-size: 18px;
+    }
+    p {
+      padding-top: 5px;
+      font-size: 14px;
+      span {
+        color: rgb(83, 226, 231);
+        font-size: 15px;
+      }
+    }
+  }
+}
