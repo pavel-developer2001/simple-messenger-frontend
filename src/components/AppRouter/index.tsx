@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "../../pages/Home";
 import Auth from "../../pages/Auth";
 import { RequireAuth } from "../../hoc/RequireAuth";
+import Chat from "../../pages/Chat";
 import Channel from "../../pages/Channel";
 import CreateChat from "../../pages/CreateChat";
 import CreateChannel from "../../pages/CreateChannel";
@@ -10,7 +11,8 @@ import CreateChannel from "../../pages/CreateChannel";
 const AppRouter = () => {
   const privateRoutes = [
     { path: "/", component: <Home /> },
-    { path: "/:id", component: <Channel /> },
+    { path: "/chat/:id", component: <Chat /> },
+    { path: "/channel/:id", component: <Channel /> },
     { path: "/create-chat", component: <CreateChat /> },
     { path: "/create-channel", component: <CreateChannel /> },
   ];

@@ -1,8 +1,77 @@
 import React from "react";
 import Layout from "../../components/Layout";
+import styles from "./CreateChannel.module.scss";
+import * as yup from "yup";
+import { useForm, Controller } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 
+const CreateChannelSchema = yup.object().shape({
+  name: yup.string().required("Введите название канала"),
+  description: yup.string().required("Введите описание канала"),
+});
 const CreateChannel = () => {
-  return <Layout>Create Channel</Layout>;
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(CreateChannelSchema),
+  });
+  const onSubmit = async (data: any) => {
+    console.log("DATA", data);
+  };
+  return (
+    <Layout>
+      <div className={styles.main}>
+        <Typography variant='h4' gutterBottom component='div'>
+          Создать канал
+        </Typography>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className={styles.input}>
+            <Controller
+              render={({ field }) => (
+                <TextField
+                  {...field}
+                  label='Название канала'
+                  id='outlined-error-helper-text'
+                  error={!!errors?.name}
+                  helperText={errors?.name?.message}
+                />
+              )}
+              name='name'
+              control={control}
+              defaultValue=''
+            />
+          </div>
+          <div className={styles.input}>
+            <Controller
+              render={({ field }) => (
+                <TextField
+                  {...field}
+                  label='Описание канала'
+                  id='outlined-error-helper-text'
+                  error={!!errors?.description}
+                  helperText={errors?.description?.message}
+                />
+              )}
+              name='description'
+              control={control}
+              defaultValue=''
+            />
+          </div>
+
+          <div>
+            <Button variant='contained' type='submit'>
+              Создать
+            </Button>
+          </div>
+        </form>
+      </div>
+    </Layout>
+  );
 };
 
 export default CreateChannel;

@@ -1,4 +1,5 @@
 .mainList {
+  margin: 0px;
   overflow: auto;
   max-height: 640px;
 }
@@ -17,6 +18,10 @@
       padding-top: 7px;
       color: darkcyan;
       font-size: 13px;
+      span {
+        color: blueviolet;
+        font-size: 14px;
+      }
     }
   }
   &:hover {

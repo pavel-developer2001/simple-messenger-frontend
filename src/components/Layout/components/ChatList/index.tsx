@@ -1,35 +1,35 @@
 import Avatar from "@mui/material/Avatar";
-import deepPurple from "@mui/material/colors/deepPurple";
+import { deepPurple } from "@mui/material/colors";
 import React from "react";
 import { Link } from "react-router-dom";
-import styles from "./ChannelList.module.scss";
+import styles from "./ChatList.module.scss";
 
-const ChannelListItem = () => {
+const ChatListItem = () => {
   return (
-    <Link to='/channel/1'>
+    <Link to='/chat/1'>
       <div className={styles.main}>
         <div className={styles.avatar}>
           <Avatar sx={{ bgcolor: deepPurple[500], width: 45, height: 45 }}>
-            C
+            A
           </Avatar>
         </div>
         <div className={styles.content}>
-          <strong>Marvel Fans</strong>
-          <p>Режиссёр "Чудо-женщины 2" предположила, что</p>
+          <strong>Murrengan</strong>
+          <p>
+            <span>твой братишка:</span> hello guys
+          </p>
         </div>
       </div>
     </Link>
   );
 };
-
-const ChannelList = () => {
+const ChatList = () => {
   return (
     <div className={styles.mainList}>
-      <ChannelListItem />
-      <ChannelListItem />
-      <ChannelListItem />
+      <ChatListItem />
+      <ChatListItem />
     </div>
   );
 };
 
-export default ChannelList;
+export default ChatList;
