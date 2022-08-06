@@ -6,6 +6,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Alert from "@mui/material/Alert";
+import auth from "../../../../entities/auth/model/auth";
+import { observer } from "mobx-react-lite";
 
 const RegisterFormSchema = yup.object().shape({
   login: yup.string().required("Введите логин"),
@@ -24,6 +26,7 @@ const RegisterForm = () => {
     control,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     resolver: yupResolver(RegisterFormSchema),
   });
@@ -32,7 +35,9 @@ const RegisterForm = () => {
     if (data.password !== data.password2) {
       return setAlertError(true);
     }
-    console.log("DATA", data);
+    const payload = { name: data.login, password: data.password };
+    auth.registerUser(payload);
+    reset();
   };
   return (
     <div className={styles.main}>
@@ -99,4 +104,4 @@ const RegisterForm = () => {
   );
 };
 
-export default RegisterForm;
+export default observer(RegisterForm);

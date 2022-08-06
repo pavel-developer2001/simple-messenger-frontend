@@ -1,6 +1,4 @@
-import React from "react";
-import styles from "./Home.module.scss";
-import Layout from "../../components/Layout";
+import Layout from "../../shared/ui/Layout";
 
 const Home = () => {
   return <Layout>Выбирите, кому хотели бы написать</Layout>;

@@ -1,13 +1,17 @@
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import { style } from "@mui/system";
-import React, { useState } from "react";
+import { useState } from "react";
 import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
 import styles from "./Auth.module.scss";
+import { Navigate } from "react-router-dom";
+import auth from "../../entities/auth/model/auth";
+import { observer } from "mobx-react-lite";
 
 const Auth = () => {
   const [register, setRegister] = useState(true);
+  const isAuth = auth.isAuth;
+  if (isAuth) return <Navigate to={"/"} />;
   return (
     <div className={styles.main}>
       <Paper>
@@ -26,4 +30,4 @@ const Auth = () => {
   );
 };
 
-export default Auth;
+export default observer(Auth);

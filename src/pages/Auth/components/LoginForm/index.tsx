@@ -6,6 +6,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import styles from "./LoginForm.module.scss";
+import { observer } from "mobx-react-lite";
+import auth from "../../../../entities/auth/model/auth";
 
 interface LoginFormProps {
   setRegister: (arg: boolean) => void;
@@ -22,11 +24,14 @@ const LoginForm: FC<LoginFormProps> = ({ setRegister }) => {
     control,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     resolver: yupResolver(LoginFormSchema),
   });
   const onSubmit = async (data: any) => {
-    console.log("DATA", data);
+    const payload = { name: data.login, password: data.password };
+    auth.loginUser(payload);
+    reset();
   };
   return (
     <div className={styles.main}>
@@ -77,4 +82,4 @@ const LoginForm: FC<LoginFormProps> = ({ setRegister }) => {
   );
 };
 
-export default LoginForm;
+export default observer(LoginForm);

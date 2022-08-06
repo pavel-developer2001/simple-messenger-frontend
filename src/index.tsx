@@ -1,12 +1,15 @@
-import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
+import App from "./app";
 import { BrowserRouter as Router } from "react-router-dom";
+import { Suspense } from "react";
+import { CircularProgress } from "@mui/material";
+import "./app/index.css";
 
 ReactDOM.render(
   <Router>
-    <App />
+    <Suspense fallback={<CircularProgress />}>
+      <App />
+    </Suspense>
   </Router>,
   document.getElementById("root")
 );
