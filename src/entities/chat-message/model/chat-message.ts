@@ -9,10 +9,9 @@ class ChatMessage {
   constructor() {
     makeAutoObservable(this);
   }
-  async create(data: { message: string; chatId: string }) {
+  async create(data: IMessage) {
     try {
-      const response = await ChatMessageApi.create(data);
-      this.messages.push(response.data);
+      this.messages.push(data);
     } catch (error) {
       this.error = (error as any).response.data.message;
     }

@@ -2,14 +2,19 @@ import Layout from "../../shared/ui/Layout";
 import MessageList from "./components/MessageList";
 import NavbarGroup from "../../shared/ui/NavbarGroup";
 import { Button, CircularProgress } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { observer } from "mobx-react-lite";
 import { useNavigate, useParams } from "react-router-dom";
 import chatMembers from "../../entities/chat-members/model/chat-members";
 import chatMessage from "../../entities/chat-message/model/chat-message";
 import AddElement from "../../shared/ui/AddElement";
+import { io } from "socket.io-client";
+import auth from "../../entities/auth/model/auth";
+import { IMessage } from "../../shared/api/messenger/models";
 
 const Chat = () => {
+  const socketRef = useRef<any>();
+  socketRef.current = io("http://localhost:5000");
   const params = useParams();
   const navigate = useNavigate();
   useEffect(() => {
@@ -18,10 +23,19 @@ const Chat = () => {
       chatMembers.getChatMembers(String(params.id));
     }
   }, [params.id]);
+  useEffect(() => {
+    socketRef.current.on("chatMessageClient", (message: IMessage) => {
+      chatMessage.create(message);
+    });
+  }, [socketRef]);
   const [message, setMessage] = useState("");
   const handleCreateMessage = () => {
-    const payload = { message, chatId: String(params.id) };
-    chatMessage.create(payload);
+    const payload = {
+      message,
+      chatId: String(params.id),
+      userId: auth.profile?._id,
+    };
+    socketRef.current.emit("chatMessageServer", payload);
     setMessage("");
   };
   const handleExit = () => {
