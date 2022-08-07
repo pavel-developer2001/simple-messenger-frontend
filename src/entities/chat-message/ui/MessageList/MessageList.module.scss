@@ -23,11 +23,19 @@
     strong {
       color: rgb(81, 146, 7);
       font-weight: 500;
-      font-size: 14px;
+      font-size: 16px;
     }
   }
   .body {
-    padding: 3px 0;
+    padding: 10px 10px 20px 10px;
+    font-size: 15px;
     font-weight: 500;
+    word-wrap: break-word;
   }
+}
+.you {
+  justify-content: flex-start;
+}
+.me {
+  justify-content: flex-end;
 }

@@ -10,7 +10,7 @@ import Avatar from "@mui/material/Avatar";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { Link, useParams } from "react-router-dom";
 import { observer } from "mobx-react-lite";
-import channelPosts from "../../../../entities/channel-posts/model/channel-posts";
+import channelPosts from "../../model/channel-posts";
 import { CircularProgress } from "@mui/material";
 import { IPost } from "../../../../shared/api/messenger/models";
 

@@ -1,6 +1,6 @@
 import Avatar from "@mui/material/Avatar";
 import { observer } from "mobx-react-lite";
-import auth from "../../../../../../../entities/auth/model/auth";
+import auth from "../../model/auth";
 import styles from "./UserData.module.scss";
 
 const UserData = () => {

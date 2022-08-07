@@ -1,5 +1,5 @@
 import Layout from "../../shared/ui/Layout";
-import PostList from "./components/PostList";
+import PostList from "../../entities/channel-posts/ui/PostList";
 import NavbarGroup from "../../shared/ui/NavbarGroup";
 import { Button, CircularProgress } from "@mui/material";
 import { observer } from "mobx-react-lite";

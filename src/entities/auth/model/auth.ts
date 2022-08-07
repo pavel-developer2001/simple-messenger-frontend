@@ -5,7 +5,7 @@ import { IUser } from "../../../shared/api/messenger/models";
 class Auth {
   isAuth = false;
   isLoading = true;
-  error = null;
+  error: string[] = [];
   profile: IUser | null = null;
 
   constructor() {
@@ -18,7 +18,7 @@ class Auth {
       this.isLoading = false;
       this.isAuth = true;
     } catch (error) {
-      this.error = (error as any).response.data.message;
+      this.error.push((error as any).response.data.message);
     }
   }
   async loginUser(data: { name: string; password: string }) {
@@ -28,7 +28,7 @@ class Auth {
       this.isLoading = false;
       this.isAuth = true;
     } catch (error) {
-      this.error = (error as any).response.data.message;
+      this.error.push((error as any).response.data.message);
     }
   }
   checkAuth(check: boolean) {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./RegisterForm.module.scss";
 import * as yup from "yup";
 import { useForm, Controller } from "react-hook-form";
@@ -6,7 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Alert from "@mui/material/Alert";
-import auth from "../../../../entities/auth/model/auth";
+import auth from "../../model/auth";
 import { observer } from "mobx-react-lite";
 
 const RegisterFormSchema = yup.object().shape({
@@ -37,7 +37,9 @@ const RegisterForm = () => {
     }
     const payload = { name: data.login, password: data.password };
     auth.registerUser(payload);
-    reset();
+    if (auth.error.length === 0) {
+      reset();
+    }
   };
   return (
     <div className={styles.main}>
@@ -100,6 +102,19 @@ const RegisterForm = () => {
           </Button>
         </div>
       </form>
+      {auth.error.length !== 0 ? (
+        auth.error.length > 1 ? (
+          auth.error.map((err) => (
+            <Alert key={err} variant='filled' severity='error'>
+              {err}
+            </Alert>
+          ))
+        ) : (
+          <Alert variant='filled' severity='error'>
+            {auth.error}
+          </Alert>
+        )
+      ) : null}
     </div>
   );
 };

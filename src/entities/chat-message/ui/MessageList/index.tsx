@@ -6,14 +6,21 @@ import Paper from "@mui/material/Paper";
 import { observer } from "mobx-react-lite";
 import { FC, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import chatMessage from "../../../../entities/chat-message/model/chat-message";
+import chatMessage from "../../model/chat-message";
 import { IMessage } from "../../../../shared/api/messenger/models";
 import dayjs from "dayjs";
 import styles from "./MessageList.module.scss";
+import auth from "../../../auth/model/auth";
 
 const MessageListItem: FC<{ message: IMessage }> = ({ message }) => {
   return (
-    <div className={styles.main}>
+    <div
+      className={
+        styles.main +
+        " " +
+        (message.user._id === auth.profile?._id ? styles.me : styles.you)
+      }
+    >
       <div className={styles.avatar}>
         <Avatar sx={{ bgcolor: deepPurple[500] }}>U</Avatar>
       </div>

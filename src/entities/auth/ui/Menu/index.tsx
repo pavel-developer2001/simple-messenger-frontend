@@ -2,8 +2,8 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
-import MenuList from "./components/MenuList";
-import UserData from "./components/UserData";
+import MenuList from "../MenuList";
+import UserData from "../UserData";
 import DehazeIcon from "@mui/icons-material/Dehaze";
 import styles from "./Menu.module.scss";
 

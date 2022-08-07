@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { TextField } from "@mui/material";
-import Menu from "./components/Menu";
-import ChatList from "./components/ChatList";
+import Menu from "../../../entities/auth/ui/Menu";
+import ChatList from "../../../entities/chat/ui/ChatList";
 import styles from "./Layout.module.scss";
-import ChannelList from "./components/ChannelList";
+import ChannelList from "../../../entities/channel/ui/ChannelList";
 
 interface LayoutProps {
   children: any;

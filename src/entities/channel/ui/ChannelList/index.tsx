@@ -4,8 +4,8 @@ import deepPurple from "@mui/material/colors/deepPurple";
 import { observer } from "mobx-react-lite";
 import { FC, useEffect } from "react";
 import { Link } from "react-router-dom";
-import channel from "../../../../../entities/channel/model/channel";
-import { IChannel } from "../../../../api/messenger/models";
+import channel from "../../model/channel";
+import { IChannel } from "../../../../shared/api/messenger/models";
 import styles from "./ChannelList.module.scss";
 
 const ChannelListItem: FC<{ channel: IChannel }> = ({ channel }) => {

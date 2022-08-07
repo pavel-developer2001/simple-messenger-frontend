@@ -4,8 +4,8 @@ import { deepPurple } from "@mui/material/colors";
 import { observer } from "mobx-react-lite";
 import { useEffect, FC } from "react";
 import { Link } from "react-router-dom";
-import chat from "../../../../../entities/chat/model/chat";
-import { IChat } from "../../../../api/messenger/models";
+import chat from "../../model/chat";
+import { IChat } from "../../../../shared/api/messenger/models";
 import styles from "./ChatList.module.scss";
 
 const ChatListItem: FC<{ chat: IChat }> = ({ chat }) => {

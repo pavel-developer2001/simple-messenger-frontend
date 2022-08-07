@@ -7,7 +7,7 @@ import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import FiberNewIcon from "@mui/icons-material/FiberNew";
 import { Link } from "react-router-dom";
 import { observer } from "mobx-react-lite";
-import auth from "../../../../../../../entities/auth/model/auth";
+import auth from "../../model/auth";
 
 const MenuList = () => {
   const listItems = [

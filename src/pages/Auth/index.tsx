@@ -1,8 +1,8 @@
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import { useState } from "react";
-import LoginForm from "./components/LoginForm";
-import RegisterForm from "./components/RegisterForm";
+import LoginForm from "../../entities/auth/ui/LoginForm";
+import RegisterForm from "../../entities/auth/ui/RegisterForm";
 import styles from "./Auth.module.scss";
 import { Navigate } from "react-router-dom";
 import auth from "../../entities/auth/model/auth";

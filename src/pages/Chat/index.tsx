@@ -1,5 +1,5 @@
 import Layout from "../../shared/ui/Layout";
-import MessageList from "./components/MessageList";
+import MessageList from "../../entities/chat-message/ui/MessageList";
 import NavbarGroup from "../../shared/ui/NavbarGroup";
 import { Button, CircularProgress } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
@@ -30,13 +30,15 @@ const Chat = () => {
   }, [socketRef]);
   const [message, setMessage] = useState("");
   const handleCreateMessage = () => {
-    const payload = {
-      message,
-      chatId: String(params.id),
-      userId: auth.profile?._id,
-    };
-    socketRef.current.emit("chatMessageServer", payload);
-    setMessage("");
+    if (auth.profile?._id) {
+      const payload = {
+        message,
+        chatId: String(params.id),
+        userId: auth.profile?._id,
+      };
+      socketRef.current.emit("chatMessageServer", payload);
+      setMessage("");
+    }
   };
   const handleExit = () => {
     chatMembers.exit(String(params.id));

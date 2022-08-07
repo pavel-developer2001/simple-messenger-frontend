@@ -1,5 +1,5 @@
 import Typography from "@mui/material/Typography";
-import React, { FC } from "react";
+import  { FC } from "react";
 import * as yup from "yup";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -7,7 +7,8 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import styles from "./LoginForm.module.scss";
 import { observer } from "mobx-react-lite";
-import auth from "../../../../entities/auth/model/auth";
+import auth from "../../model/auth";
+import { Alert } from "@mui/material";
 
 interface LoginFormProps {
   setRegister: (arg: boolean) => void;
@@ -30,8 +31,10 @@ const LoginForm: FC<LoginFormProps> = ({ setRegister }) => {
   });
   const onSubmit = async (data: any) => {
     const payload = { name: data.login, password: data.password };
-    auth.loginUser(payload);
-    reset();
+    await auth.loginUser(payload);
+    if (auth.error.length === 0) {
+      reset();
+    }
   };
   return (
     <div className={styles.main}>
@@ -78,6 +81,19 @@ const LoginForm: FC<LoginFormProps> = ({ setRegister }) => {
         Нет аккаунта?{" "}
         <strong onClick={() => setRegister(false)}>Зарегистрируйтесь</strong>
       </Typography>
+      {auth.error.length !== 0 ? (
+        auth.error.length > 1 ? (
+          auth.error.map((err) => (
+            <Alert key={err} variant='filled' severity='error'>
+              {err}
+            </Alert>
+          ))
+        ) : (
+          <Alert variant='filled' severity='error'>
+            {auth.error}
+          </Alert>
+        )
+      ) : null}
     </div>
   );
 };
