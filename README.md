@@ -37,4 +37,4 @@ yarn start
 ```
 
 !!! To work properly, you need to raise the backend.
-The backend version of this project [here](https://github.com/pavel-developer2001/simple-messenger-frontend).
+The backend version of this project [here](https://github.com/pavel-developer2001/simple-messenger-backend).
