@@ -1,10 +1,10 @@
 import { makeAutoObservable } from "mobx";
-import ChatApi from "../../../shared/api/messenger/chat-api";
+import ChatApi from "../chat-api";
 import { IChat } from "../../../shared/api/messenger/models";
 
 class Chat {
   isLoading = true;
-  chats: IChat[]= [];
+  chats: IChat[] = [];
   error = [];
   constructor() {
     makeAutoObservable(this);

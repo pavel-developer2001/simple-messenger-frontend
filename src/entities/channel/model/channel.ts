@@ -1,10 +1,10 @@
 import { makeAutoObservable } from "mobx";
-import ChannelApi from "../../../shared/api/messenger/channel-api";
+import ChannelApi from "../channel-api";
 import { IChannel } from "../../../shared/api/messenger/models";
 
 class Channel {
   isLoading = true;
-  channels: IChannel[]= [];
+  channels: IChannel[] = [];
   error = [];
   channel = {};
   constructor() {

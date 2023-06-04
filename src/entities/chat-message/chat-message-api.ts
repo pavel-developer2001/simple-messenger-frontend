@@ -1,4 +1,4 @@
-import instance from "./base";
+import instance from "../../shared/api/messenger/base";
 
 export default class ChatMessageApi {
   static async getChatMessages(id: string) {

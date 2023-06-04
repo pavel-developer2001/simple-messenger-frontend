@@ -1,5 +1,5 @@
 import { makeAutoObservable } from "mobx";
-import ChatMessageApi from "../../../shared/api/messenger/chat-message-api";
+import ChatMessageApi from "../chat-message-api";
 import { IMessage } from "../../../shared/api/messenger/models";
 
 class ChatMessage {

@@ -1,5 +1,5 @@
 import { makeAutoObservable } from "mobx";
-import ChannelPostsApi from "../../../shared/api/messenger/channel-posts-api";
+import ChannelPostsApi from "../channel-posts-api";
 import { IPost } from "../../../shared/api/messenger/models";
 
 class ChannelPosts {

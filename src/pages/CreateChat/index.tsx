@@ -1,4 +1,4 @@
-import CreateChatWidget from "../../widget/CreateChatWidget";
+import CreateChatWidget from "../../widgets/CreateChatWidget";
 
 const CreateChat = () => {
   return <CreateChatWidget />;

@@ -1,4 +1,4 @@
-import CreateChannelWidget from "../../widget/CreateChannelWidget";
+import CreateChannelWidget from "../../widgets/CreateChannelWidget";
 
 const CreateChannel = () => {
   return <CreateChannelWidget />;

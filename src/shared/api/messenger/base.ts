@@ -1,6 +1,6 @@
 import { API_URL } from "../../config";
 import axios from "axios";
-import AuthApi from "./auth-api";
+import AuthApi from "../../../entities/auth/auth-api";
 
 const instance = axios.create({
   baseURL: API_URL,

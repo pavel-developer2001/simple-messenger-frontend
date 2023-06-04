@@ -1,5 +1,5 @@
 import { makeAutoObservable } from "mobx";
-import AuthApi from "../../../shared/api/messenger/auth-api";
+import AuthApi from "../auth-api";
 import { IUser } from "../../../shared/api/messenger/models";
 
 class Auth {
