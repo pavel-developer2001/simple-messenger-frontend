@@ -1,20 +1,20 @@
-import Layout from "../../shared/ui/Layout";
-import styles from "./CreateChannelWidget.module.scss";
-import * as yup from "yup";
-import { useForm, Controller } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import { useNavigate } from "react-router-dom";
-import channel from "../../entities/channel/model/channel";
-import { observer } from "mobx-react-lite";
-import { Alert } from "@mui/material";
+import Layout from "../../shared/ui/Layout"
+import styles from "./CreateChannelWidget.module.scss"
+import * as yup from "yup"
+import { useForm, Controller } from "react-hook-form"
+import { yupResolver } from "@hookform/resolvers/yup"
+import TextField from "@mui/material/TextField"
+import Button from "@mui/material/Button"
+import Typography from "@mui/material/Typography"
+import { useNavigate } from "react-router-dom"
+import channel from "../../entities/channel/model/channel"
+import { observer } from "mobx-react-lite"
+import { Alert } from "@mui/material"
 
 const CreateChannelWidgetSchema = yup.object().shape({
   name: yup.string().required("Введите название канала"),
   description: yup.string().required("Введите описание канала"),
-});
+})
 const CreateChannelWidget = () => {
   const {
     control,
@@ -23,39 +23,39 @@ const CreateChannelWidget = () => {
     reset,
   } = useForm({
     resolver: yupResolver(CreateChannelWidgetSchema),
-  });
+  })
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const onSubmit = async (data: any) => {
     const payload = {
       channelTitle: data.name,
       channelDescription: data.description,
-    };
-    await channel.create(payload);
+    }
+    await channel.create(payload)
 
     if (channel.error.length === 0) {
-      reset();
-      navigate("/");
+      reset()
+      navigate("/")
     }
-  };
+  }
   return (
     <Layout>
       {channel.error.length !== 0 ? (
         channel.error.length > 1 ? (
           channel.error.map((err) => (
-            <Alert key={err} variant='filled' severity='error'>
+            <Alert key={err} variant="filled" severity="error">
               {err}
             </Alert>
           ))
         ) : (
-          <Alert variant='filled' severity='error'>
+          <Alert variant="filled" severity="error">
             {channel.error}
           </Alert>
         )
       ) : null}
 
       <div className={styles.main}>
-        <Typography variant='h4' gutterBottom component='div'>
+        <Typography variant="h4" gutterBottom component="div">
           Создать канал
         </Typography>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -64,15 +64,15 @@ const CreateChannelWidget = () => {
               render={({ field }) => (
                 <TextField
                   {...field}
-                  label='Название канала'
-                  id='outlined-error-helper-text'
+                  label="Название канала"
+                  id="outlined-error-helper-text"
                   error={!!errors?.name}
                   helperText={errors?.name?.message}
                 />
               )}
-              name='name'
+              name="name"
               control={control}
-              defaultValue=''
+              defaultValue=""
             />
           </div>
           <div className={styles.input}>
@@ -80,27 +80,27 @@ const CreateChannelWidget = () => {
               render={({ field }) => (
                 <TextField
                   {...field}
-                  label='Описание канала'
-                  id='outlined-error-helper-text'
+                  label="Описание канала"
+                  id="outlined-error-helper-text"
                   error={!!errors?.description}
                   helperText={errors?.description?.message}
                 />
               )}
-              name='description'
+              name="description"
               control={control}
-              defaultValue=''
+              defaultValue=""
             />
           </div>
 
           <div>
-            <Button variant='contained' type='submit'>
+            <Button variant="contained" type="submit">
               Создать
             </Button>
           </div>
         </form>
       </div>
     </Layout>
-  );
-};
+  )
+}
 
-export default observer(CreateChannelWidget);
+export default observer(CreateChannelWidget)

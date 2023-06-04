@@ -8,7 +8,6 @@
 - Channels
 - Chats
 
-
 ## Technology stack:
 
 - React js

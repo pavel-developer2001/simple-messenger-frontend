@@ -1,7 +1,7 @@
-import CreateChannelWidget from "../../widgets/CreateChannelWidget";
+import CreateChannelWidget from "../../widgets/CreateChannelWidget"
 
 const CreateChannel = () => {
-  return <CreateChannelWidget />;
-};
+  return <CreateChannelWidget />
+}
 
-export default CreateChannel;
+export default CreateChannel

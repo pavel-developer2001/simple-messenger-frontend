@@ -1,30 +1,30 @@
-import { makeAutoObservable } from "mobx";
-import ChatMessageApi from "../chat-message-api";
-import { IMessage } from "../../../shared/api/messenger/models";
+import { makeAutoObservable } from "mobx"
+import ChatMessageApi from "../chat-message-api"
+import { IMessage } from "../../../shared/api/messenger/models"
 
 class ChatMessage {
-  isLoading = true;
-  error = null;
-  messages: IMessage[] = [];
+  isLoading = true
+  error = null
+  messages: IMessage[] = []
   constructor() {
-    makeAutoObservable(this);
+    makeAutoObservable(this)
   }
   async create(data: IMessage) {
     try {
-      this.messages.push(data);
+      this.messages.push(data)
     } catch (error) {
-      this.error = (error as any).response.data.message;
+      this.error = (error as any).response.data.message
     }
   }
   async getMessages(id: string) {
     try {
-      const response = await ChatMessageApi.getChatMessages(id);
-      this.messages = response.data;
-      this.isLoading = false;
+      const response = await ChatMessageApi.getChatMessages(id)
+      this.messages = response.data
+      this.isLoading = false
     } catch (error) {
-      console.log("error", error);
-      this.isLoading = false;
+      console.log("error", error)
+      this.isLoading = false
     }
   }
 }
-export default new ChatMessage();
+export default new ChatMessage()

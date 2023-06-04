@@ -1,7 +1,7 @@
-import ChatWidget from "../../widgets/ChatWidget";
+import ChatWidget from "../../widgets/ChatWidget"
 
 const Chat = () => {
-  return <ChatWidget />;
-};
+  return <ChatWidget />
+}
 
-export default Chat;
+export default Chat

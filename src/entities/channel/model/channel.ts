@@ -1,32 +1,32 @@
-import { makeAutoObservable } from "mobx";
-import ChannelApi from "../channel-api";
-import { IChannel } from "../../../shared/api/messenger/models";
+import { makeAutoObservable } from "mobx"
+import ChannelApi from "../channel-api"
+import { IChannel } from "../../../shared/api/messenger/models"
 
 class Channel {
-  isLoading = true;
-  channels: IChannel[] = [];
-  error = [];
-  channel = {};
+  isLoading = true
+  channels: IChannel[] = []
+  error = []
+  channel = {}
   constructor() {
-    makeAutoObservable(this);
+    makeAutoObservable(this)
   }
   async create(data: { channelTitle: string; channelDescription: string }) {
     try {
-      const response = await ChannelApi.create(data);
-      this.channels.push(response.data);
+      const response = await ChannelApi.create(data)
+      this.channels.push(response.data)
     } catch (error) {
-      this.error = (error as any).response.data.message;
+      this.error = (error as any).response.data.message
     }
   }
   async getChannels() {
     try {
-      const response = await ChannelApi.getChannels();
-      this.channels = response.data;
-      this.isLoading = false;
+      const response = await ChannelApi.getChannels()
+      this.channels = response.data
+      this.isLoading = false
     } catch (error) {
-      this.error = (error as any).response.data.message;
-      this.isLoading = false;
+      this.error = (error as any).response.data.message
+      this.isLoading = false
     }
   }
 }
-export default new Channel();
+export default new Channel()

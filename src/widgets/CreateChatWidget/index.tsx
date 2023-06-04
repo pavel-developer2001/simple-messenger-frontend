@@ -1,22 +1,22 @@
-import Layout from "../../shared/ui/Layout";
-import * as yup from "yup";
-import { useForm, Controller } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import styles from "./CreateChatWidget.module.scss";
-import Typography from "@mui/material/Typography";
-import { observer } from "mobx-react-lite";
-import chat from "../../entities/chat/model/chat";
-import { useNavigate } from "react-router-dom";
-import { Alert } from "@mui/material";
+import Layout from "../../shared/ui/Layout"
+import * as yup from "yup"
+import { useForm, Controller } from "react-hook-form"
+import { yupResolver } from "@hookform/resolvers/yup"
+import TextField from "@mui/material/TextField"
+import Button from "@mui/material/Button"
+import styles from "./CreateChatWidget.module.scss"
+import Typography from "@mui/material/Typography"
+import { observer } from "mobx-react-lite"
+import chat from "../../entities/chat/model/chat"
+import { useNavigate } from "react-router-dom"
+import { Alert } from "@mui/material"
 
 const CreateChatWidgetSchema = yup.object().shape({
   name: yup.string().required("Введите название чата"),
-});
+})
 
 const CreateChatWidget = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const {
     control,
     handleSubmit,
@@ -24,32 +24,32 @@ const CreateChatWidget = () => {
     reset,
   } = useForm({
     resolver: yupResolver(CreateChatWidgetSchema),
-  });
+  })
   const onSubmit = async (data: any) => {
-    const payload = { chatTitle: data.name };
-    await chat.create(payload);
+    const payload = { chatTitle: data.name }
+    await chat.create(payload)
     if (chat.error.length === 0) {
-      reset();
-      navigate("/");
+      reset()
+      navigate("/")
     }
-  };
+  }
   return (
     <Layout>
       {chat.error.length !== 0 ? (
         chat.error.length > 1 ? (
           chat.error.map((err) => (
-            <Alert key={err} variant='filled' severity='error'>
+            <Alert key={err} variant="filled" severity="error">
               {err}
             </Alert>
           ))
         ) : (
-          <Alert variant='filled' severity='error'>
+          <Alert variant="filled" severity="error">
             {chat.error}
           </Alert>
         )
       ) : null}
       <div className={styles.main}>
-        <Typography variant='h4' gutterBottom component='div'>
+        <Typography variant="h4" gutterBottom component="div">
           Создать чат
         </Typography>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -58,27 +58,27 @@ const CreateChatWidget = () => {
               render={({ field }) => (
                 <TextField
                   {...field}
-                  label='Название чата'
-                  id='outlined-error-helper-text'
+                  label="Название чата"
+                  id="outlined-error-helper-text"
                   error={!!errors?.name}
                   helperText={errors?.name?.message}
                 />
               )}
-              name='name'
+              name="name"
               control={control}
-              defaultValue=''
+              defaultValue=""
             />
           </div>
 
           <div>
-            <Button variant='contained' type='submit'>
+            <Button variant="contained" type="submit">
               Создать
             </Button>
           </div>
         </form>
       </div>
     </Layout>
-  );
-};
+  )
+}
 
-export default observer(CreateChatWidget);
+export default observer(CreateChatWidget)

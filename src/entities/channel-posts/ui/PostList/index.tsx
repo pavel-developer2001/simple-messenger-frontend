@@ -1,45 +1,45 @@
-import Paper from "@mui/material/Paper";
-import React, { FC, useEffect } from "react";
-import styles from "./PostList.module.scss";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import IconButton from "@mui/material/IconButton";
-import AvatarGroup from "@mui/material/AvatarGroup";
-import Avatar from "@mui/material/Avatar";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import { Link, useParams } from "react-router-dom";
-import { observer } from "mobx-react-lite";
-import channelPosts from "../../model/channel-posts";
-import { CircularProgress } from "@mui/material";
-import { IPost } from "../../../../shared/api/messenger/models";
+import Paper from "@mui/material/Paper"
+import React, { FC, useEffect } from "react"
+import styles from "./PostList.module.scss"
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz"
+import Menu from "@mui/material/Menu"
+import MenuItem from "@mui/material/MenuItem"
+import IconButton from "@mui/material/IconButton"
+import AvatarGroup from "@mui/material/AvatarGroup"
+import Avatar from "@mui/material/Avatar"
+import ChevronRightIcon from "@mui/icons-material/ChevronRight"
+import { Link, useParams } from "react-router-dom"
+import { observer } from "mobx-react-lite"
+import channelPosts from "../../model/channel-posts"
+import { CircularProgress } from "@mui/material"
+import { IPost } from "../../../../shared/api/messenger/models"
 
-const PostListItem: FC<{post:IPost}> = ({ post }) => {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
+const PostListItem: FC<{ post: IPost }> = ({ post }) => {
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
+  const open = Boolean(anchorEl)
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
+    setAnchorEl(event.currentTarget)
+  }
   const handleClose = () => {
-    setAnchorEl(null);
-  };
+    setAnchorEl(null)
+  }
   return (
     <div className={styles.main}>
       <Paper elevation={3}>
         <div className={styles.head}>
           <strong>{post.channel.channelTitle}</strong>
           <IconButton
-            id='demo-positioned-button'
+            id="demo-positioned-button"
             aria-controls={open ? "demo-positioned-menu" : undefined}
-            aria-haspopup='true'
+            aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
             onClick={handleClick}
           >
             <MoreHorizIcon />
           </IconButton>
           <Menu
-            id='demo-positioned-menu'
-            aria-labelledby='demo-positioned-button'
+            id="demo-positioned-menu"
+            aria-labelledby="demo-positioned-button"
             anchorEl={anchorEl}
             open={open}
             onClose={handleClose}
@@ -64,7 +64,7 @@ const PostListItem: FC<{post:IPost}> = ({ post }) => {
           /> */}
           <p>{post.post}</p>
         </div>
-        <Link to='/channel/1/comments'>
+        <Link to="/channel/1/comments">
           {" "}
           {/* <div className={styles.footer}>
             <div className={styles.left}>
@@ -99,17 +99,17 @@ const PostListItem: FC<{post:IPost}> = ({ post }) => {
         </Link>
       </Paper>
     </div>
-  );
-};
+  )
+}
 const PostList = () => {
-  const params = useParams();
+  const params = useParams()
   useEffect(() => {
     if (params.id) {
-      channelPosts.getPosts(params.id);
+      channelPosts.getPosts(params.id)
     }
-  }, [params.id]);
+  }, [params.id])
   if (channelPosts.isLoading) {
-    return <CircularProgress />;
+    return <CircularProgress />
   }
 
   return (
@@ -118,7 +118,7 @@ const PostList = () => {
         <PostListItem post={post} key={post._id} />
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default observer(PostList);
+export default observer(PostList)

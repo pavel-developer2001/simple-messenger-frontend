@@ -1,12 +1,12 @@
-import { FC } from "react";
-import { TextField } from "@mui/material";
-import Menu from "../../../entities/auth/ui/Menu";
-import ChatList from "../../../entities/chat/ui/ChatList";
-import styles from "./Layout.module.scss";
-import ChannelList from "../../../entities/channel/ui/ChannelList";
+import { FC } from "react"
+import { TextField } from "@mui/material"
+import Menu from "../../../entities/auth/ui/Menu"
+import ChatList from "../../../entities/chat/ui/ChatList"
+import styles from "./Layout.module.scss"
+import ChannelList from "../../../entities/channel/ui/ChannelList"
 
 interface LayoutProps {
-  children: any;
+  children: any
 }
 const Layout: FC<LayoutProps> = ({ children }) => {
   return (
@@ -28,7 +28,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
       </div>
       <main className={styles.right}>{children}</main>
     </div>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout

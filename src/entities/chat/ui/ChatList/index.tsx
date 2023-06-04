@@ -1,12 +1,12 @@
-import { CircularProgress } from "@mui/material";
-import Avatar from "@mui/material/Avatar";
-import { deepPurple } from "@mui/material/colors";
-import { observer } from "mobx-react-lite";
-import { useEffect, FC } from "react";
-import { Link } from "react-router-dom";
-import chat from "../../model/chat";
-import { IChat } from "../../../../shared/api/messenger/models";
-import styles from "./ChatList.module.scss";
+import { CircularProgress } from "@mui/material"
+import Avatar from "@mui/material/Avatar"
+import { deepPurple } from "@mui/material/colors"
+import { observer } from "mobx-react-lite"
+import { useEffect, FC } from "react"
+import { Link } from "react-router-dom"
+import chat from "../../model/chat"
+import { IChat } from "../../../../shared/api/messenger/models"
+import styles from "./ChatList.module.scss"
 
 const ChatListItem: FC<{ chat: IChat }> = ({ chat }) => {
   return (
@@ -25,17 +25,17 @@ const ChatListItem: FC<{ chat: IChat }> = ({ chat }) => {
         </div>
       </div>
     </Link>
-  );
-};
+  )
+}
 const ChatList = () => {
   useEffect(() => {
-    chat.getChats();
-  }, []);
+    chat.getChats()
+  }, [])
   if (chat.isLoading) {
-    return <CircularProgress />;
+    return <CircularProgress />
   }
   if (chat.chats.length === 0) {
-    return <div>Нет чатов</div>;
+    return <div>Нет чатов</div>
   }
   return (
     <aside className={styles.mainList}>
@@ -43,7 +43,7 @@ const ChatList = () => {
         <ChatListItem chat={chat} key={chat._id} />
       ))}
     </aside>
-  );
-};
+  )
+}
 
-export default observer(ChatList);
+export default observer(ChatList)

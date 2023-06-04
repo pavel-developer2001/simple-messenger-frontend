@@ -1,16 +1,16 @@
-import { CircularProgress } from "@mui/material";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import deepPurple from "@mui/material/colors/deepPurple";
-import Paper from "@mui/material/Paper";
-import { observer } from "mobx-react-lite";
-import { FC, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import chatMessage from "../../model/chat-message";
-import { IMessage } from "../../../../shared/api/messenger/models";
-import dayjs from "dayjs";
-import styles from "./MessageList.module.scss";
-import auth from "../../../auth/model/auth";
+import { CircularProgress } from "@mui/material"
+import Avatar from "@mui/material/Avatar"
+import Button from "@mui/material/Button"
+import deepPurple from "@mui/material/colors/deepPurple"
+import Paper from "@mui/material/Paper"
+import { observer } from "mobx-react-lite"
+import { FC, useEffect } from "react"
+import { useParams } from "react-router-dom"
+import chatMessage from "../../model/chat-message"
+import { IMessage } from "../../../../shared/api/messenger/models"
+import dayjs from "dayjs"
+import styles from "./MessageList.module.scss"
+import auth from "../../../auth/model/auth"
 
 const MessageListItem: FC<{ message: IMessage }> = ({ message }) => {
   return (
@@ -32,7 +32,7 @@ const MessageListItem: FC<{ message: IMessage }> = ({ message }) => {
             <div className={styles.header}>
               <strong>{message.user.name}</strong>
               <div className={styles.answer}>
-                <Button variant='text'>Ответить</Button>
+                <Button variant="text">Ответить</Button>
               </div>
             </div>
             <div className={styles.body}>{message.message}</div>
@@ -43,21 +43,21 @@ const MessageListItem: FC<{ message: IMessage }> = ({ message }) => {
         </Paper>
       </div>
     </div>
-  );
-};
+  )
+}
 
 const MessageList = () => {
-  const params = useParams();
+  const params = useParams()
   useEffect(() => {
     if (params.id) {
-      chatMessage.getMessages(params.id);
+      chatMessage.getMessages(params.id)
     }
-  }, [params.id]);
+  }, [params.id])
   if (chatMessage.messages.length === 0) {
-    return <div>Нет сообщений</div>;
+    return <div>Нет сообщений</div>
   }
   if (chatMessage.isLoading) {
-    return <CircularProgress />;
+    return <CircularProgress />
   }
   return (
     <div className={styles.mainList}>
@@ -65,7 +65,7 @@ const MessageList = () => {
         <MessageListItem key={message._id} message={message} />
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default observer(MessageList);
+export default observer(MessageList)

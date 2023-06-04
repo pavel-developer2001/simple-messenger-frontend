@@ -1,12 +1,12 @@
-import { CircularProgress } from "@mui/material";
-import Avatar from "@mui/material/Avatar";
-import deepPurple from "@mui/material/colors/deepPurple";
-import { observer } from "mobx-react-lite";
-import { FC, useEffect } from "react";
-import { Link } from "react-router-dom";
-import channel from "../../model/channel";
-import { IChannel } from "../../../../shared/api/messenger/models";
-import styles from "./ChannelList.module.scss";
+import { CircularProgress } from "@mui/material"
+import Avatar from "@mui/material/Avatar"
+import deepPurple from "@mui/material/colors/deepPurple"
+import { observer } from "mobx-react-lite"
+import { FC, useEffect } from "react"
+import { Link } from "react-router-dom"
+import channel from "../../model/channel"
+import { IChannel } from "../../../../shared/api/messenger/models"
+import styles from "./ChannelList.module.scss"
 
 const ChannelListItem: FC<{ channel: IChannel }> = ({ channel }) => {
   return (
@@ -23,19 +23,19 @@ const ChannelListItem: FC<{ channel: IChannel }> = ({ channel }) => {
         </div>
       </div>
     </Link>
-  );
-};
+  )
+}
 
 const ChannelList = observer(() => {
   useEffect(() => {
-    channel.getChannels();
-  }, []);
+    channel.getChannels()
+  }, [])
 
   if (channel.isLoading) {
-    return <CircularProgress />;
+    return <CircularProgress />
   }
   if (channel.channels.length === 0) {
-    return <div>Нет каналов</div>;
+    return <div>Нет каналов</div>
   }
   return (
     <aside className={styles.mainList}>
@@ -43,7 +43,7 @@ const ChannelList = observer(() => {
         <ChannelListItem key={channel._id} channel={channel} />
       ))}
     </aside>
-  );
-});
+  )
+})
 
-export default ChannelList;
+export default ChannelList

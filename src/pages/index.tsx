@@ -1,22 +1,22 @@
-import { lazy } from "react";
-import { Route, Routes } from "react-router-dom";
-import Home from "./Home";
-import RequireAuth from "../shared/lib/hoc/RequireAuth";
+import { lazy } from "react"
+import { Route, Routes } from "react-router-dom"
+import Home from "./Home"
+import RequireAuth from "../shared/lib/hoc/RequireAuth"
 
-const Chat = lazy(() => import(/* webpackChunkName: "Chat" */ "./Chat"));
-const Auth = lazy(() => import(/* webpackChunkName: "Auth" */ "./Auth"));
+const Chat = lazy(() => import(/* webpackChunkName: "Chat" */ "./Chat"))
+const Auth = lazy(() => import(/* webpackChunkName: "Auth" */ "./Auth"))
 const Channel = lazy(
   () => import(/* webpackChunkName: "Channel" */ "./Channel")
-);
+)
 const CreateChat = lazy(
   () => import(/* webpackChunkName: "CreateChat" */ "./CreateChat")
-);
+)
 const CommentsPage = lazy(
   () => import(/* webpackChunkName: "CommentsPage" */ "./CommentsPage")
-);
+)
 const CreateChannel = lazy(
   () => import(/* webpackChunkName: "CreateChannel" */ "./CreateChannel")
-);
+)
 
 const AppRouter = () => {
   const privateRoutes = [
@@ -26,7 +26,7 @@ const AppRouter = () => {
     { path: "/channel/:id/comments", component: <CommentsPage /> },
     { path: "/create-chat", component: <CreateChat /> },
     { path: "/create-channel", component: <CreateChannel /> },
-  ];
+  ]
   return (
     <div>
       <Routes>
@@ -38,10 +38,10 @@ const AppRouter = () => {
           />
         ))}
 
-        <Route path='/auth' element={<Auth />} />
+        <Route path="/auth" element={<Auth />} />
       </Routes>
     </div>
-  );
-};
+  )
+}
 
-export default AppRouter;
+export default AppRouter

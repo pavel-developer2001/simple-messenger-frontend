@@ -1,14 +1,14 @@
-import Avatar from "@mui/material/Avatar";
-import { observer } from "mobx-react-lite";
-import auth from "../../model/auth";
-import styles from "./UserData.module.scss";
+import Avatar from "@mui/material/Avatar"
+import { observer } from "mobx-react-lite"
+import auth from "../../model/auth"
+import styles from "./UserData.module.scss"
 
 const UserData = () => {
   return (
     <div className={styles.main}>
       <Avatar
-        alt='Remy Sharp'
-        src='/static/images/avatar/1.jpg'
+        alt="Remy Sharp"
+        src="/static/images/avatar/1.jpg"
         sx={{ width: 56, height: 56 }}
       />
       {auth.profile && (
@@ -20,7 +20,7 @@ const UserData = () => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default observer(UserData);
+export default observer(UserData)

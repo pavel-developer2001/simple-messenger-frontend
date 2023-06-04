@@ -1,16 +1,16 @@
-import instance from "../../shared/api/messenger/base";
+import instance from "../../shared/api/messenger/base"
 
 export default class ChatMembersApi {
   static async join(payload: { chatId: string }) {
-    return instance.post("/chat-members/join", payload);
+    return instance.post("/chat-members/join", payload)
   }
   static async getChatMembers(id: string) {
-    return instance.get("/chat-members/" + id);
+    return instance.get("/chat-members/" + id)
   }
   static async check(id: string) {
-    return instance.get("/chat-members/check/" + id);
+    return instance.get("/chat-members/check/" + id)
   }
   static async exit(id: string) {
-    return instance.delete("/chat-members/exit/" + id);
+    return instance.delete("/chat-members/exit/" + id)
   }
 }

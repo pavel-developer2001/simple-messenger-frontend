@@ -1,14 +1,14 @@
-import { FC } from "react";
-import styles from "./NavbarGroup.module.scss";
-import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-import { IconButton } from "@mui/material";
+import { FC } from "react"
+import styles from "./NavbarGroup.module.scss"
+import ExitToAppIcon from "@mui/icons-material/ExitToApp"
+import { IconButton } from "@mui/material"
 
 interface NavbarGroupProps {
-  name: string;
-  count: number;
-  whom: string;
-  onExit: () => void;
-  status: boolean | null;
+  name: string
+  count: number
+  whom: string
+  onExit: () => void
+  status: boolean | null
 }
 
 const NavbarGroup: FC<NavbarGroupProps> = ({
@@ -27,12 +27,12 @@ const NavbarGroup: FC<NavbarGroupProps> = ({
         </span>
       </div>
       {status && (
-        <IconButton aria-label='exit' onClick={onExit}>
+        <IconButton aria-label="exit" onClick={onExit}>
           <ExitToAppIcon />
         </IconButton>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default NavbarGroup;
+export default NavbarGroup

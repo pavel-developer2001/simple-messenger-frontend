@@ -1,7 +1,7 @@
-import CreateChatWidget from "../../widgets/CreateChatWidget";
+import CreateChatWidget from "../../widgets/CreateChatWidget"
 
 const CreateChat = () => {
-  return <CreateChatWidget />;
-};
+  return <CreateChatWidget />
+}
 
-export default CreateChat;
+export default CreateChat

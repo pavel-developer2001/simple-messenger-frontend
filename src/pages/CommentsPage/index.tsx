@@ -1,8 +1,8 @@
-import React from "react";
-import Layout from "../../shared/ui/Layout";
+import React from "react"
+import Layout from "../../shared/ui/Layout"
 
 const CommentsPage = () => {
-  return <Layout>CommentsPage</Layout>;
-};
+  return <Layout>CommentsPage</Layout>
+}
 
-export default CommentsPage;
+export default CommentsPage
